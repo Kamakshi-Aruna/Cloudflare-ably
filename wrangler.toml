@@ -1,0 +1,7 @@
+name = "notifications-ably"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "notifications-db"
+database_id = "963da71a-6f40-41aa-ae75-ebd6d9be107d"

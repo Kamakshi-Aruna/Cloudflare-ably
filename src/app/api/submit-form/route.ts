@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as Ably from 'ably';
+import { d1 } from '@/lib/d1-client';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,6 +15,20 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const { name, email, message } = body;
+
+    // Save to D1 database
+    try {
+      console.log('💾 Saving to D1 database...');
+      await d1.insert('form_submissions', {
+        name,
+        email,
+        message,
+      });
+      console.log('✅ Successfully saved to D1 database');
+    } catch (dbError) {
+      console.error('❌ Error saving to D1:', dbError);
+      // Continue even if DB save fails
+    }
 
     // Initialize Ably REST client
     const client = new Ably.Rest(apiKey);
