@@ -1,4 +1,4 @@
-import NotificationForm from '@/components/NotificationForm';
+import Form from '@/components/Form';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
             Submit the form and see real-time notifications powered by Ably
           </p>
         </div>
-        <NotificationForm />
+        <Form />
       </div>
     </div>
   );
